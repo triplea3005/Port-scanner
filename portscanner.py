@@ -5,16 +5,16 @@ import socket
 
 from datetime import datetime
  
-# Defining a target
+# Defining target
 if len(sys.argv) == 2:
-    # translate hostname to IPv4
+    # translating hostname to an IPv4 address
     target = socket.gethostbyname(sys.argv[1]) 
 else:
     print("Invalid amount of Argument")
     print("Usage: python scanner.py <host>")
     sys.exit() 
 
-# Add Banner 
+# Adding text 
 print("-" * 50)
 print("Scanning Target: " + target)
 print("Scanning started at:" + str(datetime.now()))
@@ -22,23 +22,23 @@ print("-" * 50)
  
 try:
     
-    # will scan ports between 1 to 65,535
+    # scans ports between 1 - 65,535
     for port in range(1,65535):
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         socket.setdefaulttimeout(1)
         
         # returns an error indicator
-        result = s.connect_ex((target,port))
+        result = s.connect_ex((target ,port))
         if result ==0:
             print("Port {} is open".format(port))
         s.close()
         
 except KeyboardInterrupt:
-        print("\n Exiting Program !!!!")
+        print("\n Leaving Program")
         sys.exit()
 except socket.gaierror:
-        print("\n Hostname Could Not Be Resolved !!!!")
+        print("\n Hostname could not be fixed")
         sys.exit()
 except socket.error:
-        print("\n Server not responding !!!!")
+        print("\n Server did not respond")
         sys.exit()
