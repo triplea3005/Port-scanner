@@ -1,4 +1,3 @@
-#import font
 import sys
 #connect to node
 import socket
@@ -42,3 +41,4 @@ except socket.gaierror:
 except socket.error:
         print("\n Server did not respond")
         sys.exit()
+
